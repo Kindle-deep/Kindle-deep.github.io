@@ -27,21 +27,6 @@ html {
     -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-    max-width: 1920px;
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    padding: 2rem;
-    color: var(--dark-color);
-    background: url(https://s-sh-3436-knlde.oss.dogecdn.com/img/background_www.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover;
-    background-position: center 0;
-}
-
 .orb-canvas {
     position: fixed;
     top: 0;
@@ -298,6 +283,7 @@ a {
 
 body {
     position:fixed;
+    background: url(https://s-sh-3436-knlde.oss.dogecdn.com/img/background_www.jpg);
     right: 0;
     bottom: 0;
     min-width: 100%;
