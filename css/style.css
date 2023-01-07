@@ -34,7 +34,7 @@ body {
     place-items: center;
     padding: 2rem;
     color: var(--dark-color);
-    background: url(https://api.knlde.top/api);
+    background: url(https://s-sh-3436-knlde.oss.dogecdn.com/img/background_www.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     -webkit-background-size: cover;
@@ -296,7 +296,7 @@ a {
     }
 }
 
-#video{
+#background{
     position:fixed;
     right: 0;
     bottom: 0;
