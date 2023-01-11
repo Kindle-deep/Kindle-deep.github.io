@@ -1,5 +1,5 @@
 
-name: Dynamic_ciraos_Client_Worker
+name: Dynamic_Kindle_Client_Worker
 
 cleaninterval: 1000*60
 
@@ -8,12 +8,12 @@ hotpatch:
   - https://cdn.jsdelivr.net/gh/ChenYFan/ClientWorker/cw.js
   - https://raw.githubusercontent.com/ChenYFan/ClientWorker/gh-pages/cw.js
 
-# hotconfig:
-#   - https://panta.eu.org/onedrive/%F0%9F%97%82%EF%B8%8F%E5%82%A8%E7%89%A9%E9%97%B4/config.yaml
-#   - https://github.com/ciraos/ciraos-octo/blob/main/config.yaml
-#   - https://raw.githubusercontent.com/ciraos/ciraos-octo/main/config.yaml
-#   - https://cdn.jsdelivr.net/gh/ChenYFan/ClientWorker/config.yaml
-#   - https://blog.itciraos.cn/config.yaml
+hotconfig:
+  - https://panta.eu.org/onedrive/%F0%9F%97%82%EF%B8%8F%E5%82%A8%E7%89%A9%E9%97%B4/config.yaml
+  - https://github.com/Kindle-deep/Kindle-deep.github.io/blob/gh-pages/config.yaml
+  - https://raw.githubusercontent.com/Kindle-deep/Kindle-deep/gh-pages/config.yaml
+  - https://cdn.jsdelivr.net/gh/ChenYFan/ClientWorker/config.yaml
+  - https://Kindle-deep.github.io/config.yaml
 
 catch_rules:
   - rule: _
