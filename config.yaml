@@ -1,0 +1,100 @@
+
+name: Dynamic_ciraos_Client_Worker
+
+cleaninterval: 1000*60
+
+hotpatch:
+  - https://cdn.jsdelivr.net/npm/clientworker@latest
+  - https://cdn.jsdelivr.net/gh/ChenYFan/ClientWorker/cw.js
+  - https://raw.githubusercontent.com/ChenYFan/ClientWorker/gh-pages/cw.js
+
+# hotconfig:
+#   - https://panta.eu.org/onedrive/%F0%9F%97%82%EF%B8%8F%E5%82%A8%E7%89%A9%E9%97%B4/config.yaml
+#   - https://github.com/ciraos/ciraos-octo/blob/main/config.yaml
+#   - https://raw.githubusercontent.com/ciraos/ciraos-octo/main/config.yaml
+#   - https://cdn.jsdelivr.net/gh/ChenYFan/ClientWorker/config.yaml
+#   - https://blog.itciraos.cn/config.yaml
+
+catch_rules:
+  - rule: _
+    transform_rules:
+      - search: _
+        action: fetch
+        fetch:
+          engine: fetch
+          # status: 200
+          # preflight: false
+          # timeout: 30000
+          # cache:
+          #   enable: true
+          #   expire: 1000*60*60*365
+      - search: \.html$
+        header:
+          Content-Type: text/html;charset=utf-8
+      - search: (^4|^5) 
+        searchin: status 
+        action: return
+        return:
+          body: 呐呐呐~-欧尼酱~~页面不显示了，请联系管理员哦~~~
+          status: 503
+
+  #! 并发CDN流量请求 - NPM
+  - rule: ^https\:\/\/((cdn|fastly|gcore|test1|quantil)\.jsdelivr\.net\/npm|npm\.elemecdn\.com|unpkg\.com)
+    transform_rules:
+      - search: _
+        replace:
+          - https://unpkg.com
+          # - https://unpkg.zhimg.com       # 滥用封仓库 - 知乎
+          - https://npm.elemecdn.com
+          - https://code.bdstatic.com/npm
+          - https://npm.sourcegcdn.com
+          #- https://cdn.bilicdn.tk/npm     # 滥用封仓库 - GamerNoTitle
+          - https://cdn.staticfile.org
+          - _
+        action: fetch
+        fetch:
+          status: 200
+          engine: parallel
+          preflight: false
+          timeout: 3000
+          cache:
+            expire: 1000*60*60*8
+            delay: 300
+
+  #! 并发CDN流量请求 - CDNJS
+  - rule: ^https\:\/\/cdnjs\.cloudflare\.com\/ajax\/libs
+    transform_rules:
+      - search: _
+        replace:
+          - _
+          - https://cdn.bootcdn.net/ajax/libs
+          - https://lib.baomitu.com
+          - https://mirrors.cqupt.edu.cn/cdnjs/ajax/libs    # 重庆邮电
+          - https://cdn.staticfile.org
+          - https://mirrors.sustech.edu.cn/cdnjs/ajax/libs  # 南大
+          - https://cdnjs.sourcegcdn.com/ajax/libs          # 全同步 https://cdnjs.cloudflare.com
+          - _
+        action: fetch
+        fetch:
+          status: 200
+          engine: parallel
+          preflight: false
+          timeout: 3000
+          cache:
+            expire: 1000*60*60*8
+            delay: 300
+
+  - rule: ^https\:\/\/((cdn|fastly|gcore|test1|quantil)\.jsdelivr\.net\/gh)
+    transform_rules:
+      - search: _
+        replace:
+          - https://cdn.jsdelivr.net/gh
+          - https://fastly.jsdelivr.net/gh
+          - https://gcore.jsdelivr.net/gh
+          - https://test1.jsdelivr.net/gh
+          - https://testingcf.jsdelivr.net/gh
+
+  - rule: _
+    transform_rules:
+      - search: hm\.baidu\.com
+        action: skip
