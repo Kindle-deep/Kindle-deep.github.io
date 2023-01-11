@@ -3,31 +3,31 @@
 
 (async () => {
     if ('serviceWorker' in navigator) {
-        if (Number(window.localStorage.getItem('CiraosBlogHelper_Set')) < 1) {
+        if (Number(window.localStorage.getItem('KnldeHelper_Set')) < 1) {
             setTimeout(async () => {
-                console.log('检测到您的浏览器没有安装CiraosBlogHelper_Set，开始注册')
+                console.log('检测到您的浏览器没有安装KnldeHelper_Set，开始注册')
                 window.stop()
                 window.localStorage.setItem('CiraosBlogHelper_Set', 1)
                 const replacehtml = await fetch('https://npm.elemecdn.com/chenyfan-blog@1.0.13/public/notice.html')
                 document.body.innerHTML = await replacehtml.text()
-                $('#info').innerText = '尝试安装CiraosBlogHelper...';
+                $('#info').innerText = '尝试安装KnldeHelper...';
             }, 0);
         }
         const $ = document.querySelector.bind(document);
         navigator.serviceWorker.register(`/cw.js?time=${new Date().getTime()}`)
             .then(async () => {
-                if (Number(window.localStorage.getItem('CiraosBlogHelper_Set')) < 2) {
+                if (Number(window.localStorage.getItem('KnldeHelper_Set')) < 2) {
                     setTimeout(() => {
                         $('#info').innerText = '安装成功,稍等片刻...';
                     }, 0);
                     setTimeout(() => {
-                        window.localStorage.setItem('CiraosBlogHelper_Set', 2)
+                        window.localStorage.setItem('KnldeHelper_Set', 2)
                         console.log('准备跳转')
                         window.location.reload()
                     }, 500)
                 }
             })
-            .catch(err => console.error(`CiraosBlogHelper_Set:${err}`))
+            .catch(err => console.error(`KnldeHelper_Set:${err}`))
     } else {
         setTimeout(() => {
             $('#info').innerText = '很抱歉,我们已不再支持您的浏览器.';
