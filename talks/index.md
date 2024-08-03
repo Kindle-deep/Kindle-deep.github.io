@@ -2,7 +2,7 @@
 
 &lt;head&gt;
   &lt;!-- ... --&gt;
-  &lt;script src=&#34;//cdn.jsdmirror.com/gh/Uyoahz26/daodao@main/dist/qexo-dao.min.js&#34;&gt;&lt;/script&gt;
+  &lt;script src=&#34;https://cdn.jsdmirror.com/gh/Uyoahz26/daodao@main/dist/qexo-dao.min.js&#34;&gt;&lt;/script&gt;
   &lt;!-- ... --&gt;
 &lt;/head&gt;
 &lt;body&gt;
